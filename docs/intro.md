@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Introduction
 
-This is a demo site created for the aelfinity workshop.
+This is a demo site created for the AELF NUS Workshop 2024.
 
 # Objective
 
