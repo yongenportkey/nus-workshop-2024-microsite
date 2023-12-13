@@ -6,12 +6,12 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "aelfinity workshop",
-  tagline: "aelfinity workshop documentation",
+  title: "AELF NUS workshop",
+  tagline: "AELF NUS workshop documentation",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
-  url: "https://portkey-workshop-contracts-demo.vercel.app",
+  url: "https://aelf-nus-workshop-2024.vercel.app",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
@@ -53,7 +53,7 @@ const config = {
       // Replace with your project's social card
       image: "img/docusaurus-social-card.jpg",
       navbar: {
-        title: "aelfinity workshop",
+        title: "AELF NUS Workshop 2024",
       },
       footer: {
         style: "dark",
@@ -107,7 +107,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} aelfinity workshop.`,
+        copyright: `Copyright © ${new Date().getFullYear()} AELF NUS Workshop.`,
       },
       prism: {
         additionalLanguages: ["csharp", "protobuf", "powershell"],
