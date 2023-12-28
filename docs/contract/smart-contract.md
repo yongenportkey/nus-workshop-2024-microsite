@@ -1,6 +1,6 @@
 ---
 title: Smart Contract
-sidebar_position: 7
+sidebar_position: 2
 ---
 
 # Develop, deploy and call a smart contract
@@ -8,7 +8,6 @@ sidebar_position: 7
 ## 1. Development
 
 ### 1.1 Preparation
-
 
 - Install dotnet sdk.
 
@@ -43,6 +42,7 @@ dotnet new aelf -n HelloWorld
 ### 1.3 High level scope of the project
 
 If you open your project folder, you should see two newly generated directories: `src` and `test`. These correspond to the smart contract code and the unit test code for the contract, respectively.
+
 ```
 .
 ├── src
@@ -139,6 +139,7 @@ Next, we can do a simple practice of RNG on the workshop project we just created
 Firstly, we need create a new subfolder called `reference` under `workshop/Protobuf` folder.
 
 Then create a new file called `acs6.proto`, this is a standard aelf package for getting random bytes.
+
 ```protobuf copy
 syntax = "proto3";
 
@@ -221,7 +222,6 @@ message Character {
 }
 ```
 
-
 Replace `HelloWorldState.cs` by following codes, these heighlighted lines of code will create states for Initialized and Character, import and encapsulate ACS6 reference state.
 
 ```csharp copy
@@ -232,7 +232,7 @@ using AElf.Types;
 namespace AElf.Contracts.HelloWorld
 {
     // The state class is access the blockchain state
-    public class HelloWorldState : ContractState 
+    public class HelloWorldState : ContractState
     {
         // A state that holds string value
         public StringState Message { get; set; }
@@ -252,6 +252,7 @@ namespace AElf.Contracts.HelloWorld
 ```
 
 Add implementation of Initialize, CreateCharacter and GetMyCharacter methods in `HelloWorld.cs` as well:
+
 ```csharp copy
 using AElf.Sdk.CSharp;
 using Google.Protobuf.WellKnownTypes;
@@ -262,8 +263,8 @@ namespace AElf.Contracts.HelloWorld
     // Contract class must inherit the base class generated from the proto file
     public class HelloWorld : HelloWorldContainer.HelloWorldBase
     {
-        // adding this line is for preparing the contract deployment later, 
-        // to differentiate each person's contract. 
+        // adding this line is for preparing the contract deployment later,
+        // to differentiate each person's contract.
         // This is because our testnet does not allow the deployment of two identical contracts.
         // highlight-next-line
         const string author = "xibo";
@@ -348,7 +349,7 @@ namespace AElf.Contracts.HelloWorld
             // highlight-next-line
         }
     }
-    
+
 }
 ```
 
@@ -383,7 +384,7 @@ option (aelf.identity) = "acs12";
 option csharp_namespace = "AElf.Standards.ACS12";
 
 service UserContract{
-    
+
 }
 
 //Specified method fee for user contract.
@@ -402,7 +403,8 @@ message UserContractMethodFee {
 }
 ```
 
-Then we can add implementation to `hello_world_contract.proto` 
+Then we can add implementation to `hello_world_contract.proto`
+
 ```protobuf copy
 syntax = "proto3";
 
@@ -450,6 +452,7 @@ message Character {
 ```
 
 Then build under src folder again.
+
 ```bash copy
 dotnet build
 ```
@@ -486,16 +489,19 @@ Here is a gif of the whole deployment process.
   - Open terminal, type aelf-command send, fill the parameters
 
 Initialize
+
 ```bash copy
 aelf-command send "$DEMO_CONTRACT_ADDRESS" -e "$TESTNET_SIDECHAIN_ENDPOINT" -a "$WALLET_ADDRESS" -p "$WALLET_PASSWORD" Initialize
 ```
 
 CreateCharater
+
 ```bash copy
 aelf-command send "$DEMO_CONTRACT_ADDRESS" -e "$TESTNET_SIDECHAIN_ENDPOINT" -a "$WALLET_ADDRESS" -p "$WALLET_PASSWORD" CreateCharacter
 ```
 
 GetMyCharacter
+
 ```bash copy
 export GETCHAR_PARAMS=$(cat << EOL
 "$WALLET_ADDRESS"
@@ -505,6 +511,7 @@ aelf-command call "$DEMO_CONTRACT_ADDRESS" -e "$TESTNET_SIDECHAIN_ENDPOINT" -a "
 ```
 
 Here is an example of my own account:
+
 ```bash copy
 aelf-command send 2od863gNGon8cwzRWfVqVH2XgDzrePXEiZwyY6PfEYM8sFnbYw -e http://35.77.60.71:8000 -a 29zekTc31moEh33B6QiFuyPfbmG3fZfgMWoRqEwvgf2EsTPyfK -p xibo123
 ```

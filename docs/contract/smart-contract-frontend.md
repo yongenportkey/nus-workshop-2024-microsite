@@ -1,6 +1,6 @@
 ---
 title: Smart Contract on Frontend
-sidebar_position: 8
+sidebar_position: 3
 ---
 
 # Interacting with the deployed smart contract on the frontend
