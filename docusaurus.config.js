@@ -57,56 +57,6 @@ const config = {
       },
       footer: {
         style: "dark",
-        links: [
-          {
-            title: "Home",
-            items: [
-              {
-                label: "Intro",
-                to: "/docs/intro",
-              },
-            ],
-          },
-          {
-            title: "Token",
-            items: [
-              {
-                label: "Create Token",
-                to: "/docs/create-token",
-              },
-            ],
-          },
-          {
-            title: "UI",
-            items: [
-              {
-                label: "Portkey Sign In",
-                to: "/docs/sign-in",
-              },
-              {
-                label: "Get Balance",
-                to: "/docs/get-balance",
-              },
-              {
-                label: "Get NFT",
-                to: "/docs/get-nft",
-              },
-            ],
-          },
-          {
-            title: "Smart Contract",
-            items: [
-              {
-                label: "Smart Contract",
-                to: "/docs/smart-contract",
-              },
-              {
-                label: "Frontend",
-                to: "/docs/smart-contract-frontend",
-              },
-            ],
-          },
-        ],
         copyright: `Copyright © ${new Date().getFullYear()} AELF NUS Workshop.`,
       },
       prism: {
