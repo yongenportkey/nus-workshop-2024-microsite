@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Setting up
 
 Before we start, we need to set up the following:
