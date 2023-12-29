@@ -8,7 +8,7 @@ sidebar_position: 1
 
 Streamlined framework for swift and secure smart contract development on AElf blockchain. Eliminates template code, enforces best practices, and ensures modularity and interoperability.
 
-# Install
+## 1. Install
 
 To install `AELF Contract Templates`, run the following command at the Terminal:
 
@@ -18,7 +18,7 @@ dotnet new install AElf.ContractTemplates
 
 `dotnet new aelf` is now available in your terminal.
 
-# Help
+## 2. Help
 
 To view more information, you can run the command `dotnet new aelf --help`:
 
