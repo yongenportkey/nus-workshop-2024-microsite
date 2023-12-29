@@ -1,4 +1,4 @@
 ---
-title: Deploy contract
+title: Deployment
 sidebar_position: 2
 ---
