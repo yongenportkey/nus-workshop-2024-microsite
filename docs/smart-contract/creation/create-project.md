@@ -4,6 +4,8 @@ sidebar_position: 2
 
 # Create a new project
 
+## 1. Create project folder
+
 At the Terminal, run the following commands:
 
 ```bash
@@ -14,7 +16,7 @@ dotnet new aelf -n Workshop
 
 Open the `workshop` folder in your IDE.
 
-# Generated code
+## 2. Generated code
 
 If you open your project folder, you should see two newly generated directories: src and test. These correspond to the smart contract code and the unit test code for the contract, respectively.
 
@@ -40,7 +42,7 @@ If you open your project folder, you should see two newly generated directories:
     └── _Setup.cs
 ```
 
-# Testing the code builds correctly
+## 3. Testing the code builds correctly
 
 Before we start, let us check that the code builds correctly:
 
