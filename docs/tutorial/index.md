@@ -5,7 +5,7 @@ sidebar_position: 6
 
 # Tutorial
 
-In this tutorial, we will create an example application implementing the concept of the `Proof of Attendance Protocol (POAP)`.
+In this tutorial, we will create an example application implementing the concept of a simple `Proof of Attendance Protocol (POAP)`.
 
 ## 1. Introduction
 
