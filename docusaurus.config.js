@@ -45,10 +45,12 @@ const config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             "https://github.com/yongenportkey/nus-workshop-2024/tree/main/",
+          routeBasePath: "/", // Serve the docs at the site's root
         },
         theme: {
           customCss: "./src/css/custom.css",
         },
+        blog: false, // Optional: disable the blog plugin
       }),
     ],
   ],
