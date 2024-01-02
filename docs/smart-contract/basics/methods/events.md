@@ -1,0 +1,75 @@
+---
+sidebar_position: 3
+---
+
+# Events
+
+Contracts can emit events that signal that changes have occurred. Unlink building view methods and waiting for external calls to expose states, events are stored in the blockchain transaction log, so they become part of the permanent record.
+
+Once those events are added to the chain, an off-chain application can listen to events.
+
+For example, in the implementation of the Update method in the **HelloWorld** contract, you can emit (fire) an event to notify the outside world that the status of the Message has changed.
+
+```csharp
+// A method that modifies the contract state
+public override Empty Update(StringValue input)
+{
+    // Set the message value in the contract state
+    State.Message.Value = input.Value;
+    // Emit an event to notify listeners about something happened during the execution of this method
+    Context.Fire(new UpdatedMessage
+    {
+        Value = input.Value
+    });
+    return new Empty();
+}
+```
+
+The definition of UpdatedMessage is:
+
+```protobuf
+// An event that will be emitted from contract method call
+message UpdatedMessage {
+  option (aelf.is_event) = true;
+  string value = 1;
+}
+```
+
+:::tip
+
+Remember to add option `option (aelf.is_event) = true;` to ensure that this message will be emitted as an event.
+
+:::
+
+We have designed the `aelf.is_indexed` option for the fields of event message, but in reality, it has no effect.
+
+```protobuf
+// An event that will be emitted from contract method call
+message UpdatedMessage {
+  option (aelf.is_event) = true;
+  string value = 1 [(aelf.is_indexed) = true];
+}
+```
+
+It's just that when reading events, their information is included in two properties: **Indexed** and **NonIndexed**. Like in the above definition, after adding `[(aelf.is_indexed) = true]`, the value field will go from **NonIndexed** to **Indexed**.
+
+# Definition of event
+
+The following is the definition of event on aelf.
+
+```protobuf
+message LogEvent {
+    // The contract address.
+    Address address = 1;
+    // The name of the log event.
+    string name = 2;
+    // The indexed data, used to calculate bloom.
+    repeated bytes indexed = 3;
+    // The non indexed data.
+    bytes non_indexed = 4;
+}
+```
+
+**Indexed** is a list, **NonIndexed** is a single object.
+
+And to encode an event, the proto file that defines this event must be known.
