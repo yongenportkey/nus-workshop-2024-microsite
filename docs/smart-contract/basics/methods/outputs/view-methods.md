@@ -1,0 +1,68 @@
+---
+sidebar_position: 2
+---
+
+# View Methods
+
+By default, States defined in the contract cannot be accessed through external sources unless the contract developer implements a view method specifically designed to expose the value of a State.
+
+To define a **view** method in the proto file of the contract, you need to add `option (aelf.is_view) = true;` to the rpc method.
+
+```protobuf
+rpc Read (google.protobuf.Empty) returns (google.protobuf.StringValue) {
+  option (aelf.is_view) = true;
+}
+```
+
+# `Read` method
+
+The Read method aims to expose the value of `State.Message.Value` is actually very straightforward to implement.
+
+```csharp
+// A method that read the contract state
+public override StringValue Read(Empty input)
+{
+    // Retrieve the value from the state
+    var value = State.Message.Value;
+    // Wrap the value in the return type
+    return new StringValue
+    {
+        Value = value
+    };
+}
+```
+
+# `ReadMessage` method
+
+You can define another method to expose the value of the mapped state `State.Messages`.
+
+```protobuf
+rpc ReadMessage (google.protobuf.Int32Value) returns (google.protobuf.StringValue) {
+  option (aelf.is_view) = true;
+}
+```
+
+And the implementation can be:
+
+```csharp
+public override StringValue ReadMessage(Int32Value input)
+{
+    return new StringValue
+    {
+        Value = State.Messages[input.Value]
+    };
+}
+```
+
+:::tip
+
+It is worth noting that when you call any View method, its return value will not be null. If the state does not exist and the return value is of type StringValue, the return value will be a:
+
+```csharp
+new StringValue()
+{
+    Value = ""
+};
+```
+
+:::
