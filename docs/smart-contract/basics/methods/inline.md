@@ -1,0 +1,45 @@
+---
+sidebar_position: 3
+---
+
+# Inline Transaction
+
+When you need to call methods from other contracts during the implementation of your own contract methods, there are two types:
+
+1. Call view methods without expecting to modify any states of other contracts.
+2. Call action methods and hope that the states of other contracts will be modified because of this calling.
+
+For the first type, you can use `Context.Call` method to complete the call to the view methods and immediately obtain the return value, which can be applied in the context of the contract implementation.
+
+For the second type, during the implementation of the AELF contract, all you can do is prepare a transaction without a signature (we call it an **inline transaction**) and **add it to a list**. Transactions on this list will be executed one by one recursively, following the completion of the code for the method you have implemented, based on the time it was added.
+
+Therefore, it should be noted that on aelf, when you try to modify the states of other contracts, the modification does not occur immediately. It can only be gradually modified through **inline transactions** after the current contract method has been fully executed. This is different from EVM.
+
+You can use the `Context.SendInline` method to add an inline transaction to the current executing context.
+
+```csharp
+// A method that modifies the contract state
+public override Empty Update(StringValue input)
+{
+    var tokenContractAddress = Context.GetContractAddressByName(SmartContractConstants.TokenContractSystemName);
+    // Do not forget to reference token_contract.proto to generate the TransferInput type.
+    Context.SendInline(tokenContractAddress, "Transfer", new TransferInput
+    {
+        To = receiverAddress,
+        Symbol = "ELF",
+        Amount = 100
+    });
+    // Set the message value in the contract state
+    State.Message.Value = input.Value;
+    // Emit an event to notify listeners about something happened during the execution of this method
+    Context.Fire(new UpdatedMessage
+    {
+        Value = input.Value
+    });
+    return new Empty();
+}
+```
+
+In the above example, an inline transaction for transfer was added in the beginning of Update method, which attempts to call the **Transfer** method of the **MultiToken Contract** (one of the System Contracts) and will only be executed after the Update method is completed.
+
+Of course, cross contract calls can also be completed through **ContractReferenceState**. ContractReferenceState is only meant to facilitate developers to call methods in other contracts, essentially the `Context.Call` and `Context.SendInline` are used to complete such tasks.
