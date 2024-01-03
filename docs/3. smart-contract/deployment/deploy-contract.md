@@ -49,7 +49,7 @@ message UserContractMethodFee {
 }
 ```
 
-Then we can add implementation to `hello_world_contract.proto`
+Then we can add implementation to `poap_contract.proto`
 
 ```protobuf copy
 syntax = "proto3";
@@ -57,51 +57,63 @@ syntax = "proto3";
 import "aelf/core.proto";
 import "aelf/options.proto";
 import "google/protobuf/empty.proto";
-import "google/protobuf/wrappers.proto";
+import "google/protobuf/timestamp.proto";
 // highlight-next-line
 import "Protobuf/reference/acs12.proto";
 // The namespace of this class
-option csharp_namespace = "AElf.Contracts.HelloWorld";
+option csharp_namespace = "AElf.Contracts.POAPContract";
 
-service HelloWorld {
+service POAPContract {
   // The name of the state class the smart contract is going to use to access blockchain state
-  option (aelf.csharp_state) = "AElf.Contracts.HelloWorld.HelloWorldState";
+  option (aelf.csharp_state) = "AElf.Contracts.POAPContract.POAPContractState";
   // highlight-next-line
   option (aelf.base) = "Protobuf/reference/acs12.proto";
-  // Actions (methods that modify contract state)
-  // Stores the value in contract state
-  rpc Update (google.protobuf.StringValue) returns (google.protobuf.Empty) {
-  }
-  rpc Initialize (google.protobuf.Empty) returns (google.protobuf.Empty);
-  rpc CreateCharacter (google.protobuf.Empty) returns (Character);
 
-  // Views (methods that don't modify contract state)
-  // Get the value stored from contract state
-  rpc Read (google.protobuf.Empty) returns (google.protobuf.StringValue) {
-    option (aelf.is_view) = true;
+  rpc Initialize (google.protobuf.Empty) returns (google.protobuf.Empty) {
   }
-  rpc GetMyCharacter (aelf.Address) returns (Character) {
-    option (aelf.is_view) = true;
+  rpc CreateCollection (CreateCollectionInput) returns (google.protobuf.Empty) {
+  }
+  rpc Mint (google.protobuf.Empty) returns (google.protobuf.Empty) {
   }
 }
 
-// An event that will be emitted from contract method call
-message UpdatedMessage {
+message Minted {
   option (aelf.is_event) = true;
-  string value = 1;
+  string symbol = 1;
+  aelf.Address receiver = 2;
 }
-message Character {
-    int32 health = 1;
-    int32 strength = 2;
-    int32 speed = 3;
+
+message CreateCollectionInput {
+  string symbol = 1;
+  string nft_image_url = 2;
+  string event_title = 3;
+  string event_date = 4;
+  string event_venue = 5;
+  string event_description = 6;
+  google.protobuf.Timestamp event_start_time = 7;
+  google.protobuf.Timestamp event_end_time = 8;
+}
+
+message CollectionInfo {
+  string nft_image_url = 1;
+  string event_title = 2;
+  string event_date = 3;
+  string event_venue = 4;
+  string event_description = 5;
 }
 ```
 
 Then build under src folder again.
 
+:::warning
+Please note that the DLL contract files with identical code cannot be deployed repeatedly.
+If you intend to deploy contract code with the same logic, make a slight modification in the code. For instance, add a line like `var name = "xxx"`.
+:::
+
 ```bash copy
 dotnet build
 ```
+
 
 2. Go to https://explorer-test-side02.aelf.io/proposal/proposals and login your portkey account, and transfer some tokens to sidechain as we need deploy on sidechain.
 
