@@ -7,7 +7,7 @@ sidebar_position: 2
 
 ## 1. Introduction
 
-Developers can leverage the aelf testnet network available at https://aelf-test-node.aelf.io/ for thorough testing of their smart contracts during the development phase.
+Developers can leverage the aelf testnet network for thorough testing of their smart contracts during the development phase. Transactions on the aelf testnet require testnet tokens to cover transaction fees.
 
 ## 2. Getting testnet tokens
 
