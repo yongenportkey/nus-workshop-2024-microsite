@@ -1,9 +1,8 @@
 ---
-title: Testnet Faucet
 sidebar_position: 2
 ---
 
-# Accessing the aelf testnet faucet
+# Grab testnet ELF from the faucet
 
 ## 1. Introduction
 
