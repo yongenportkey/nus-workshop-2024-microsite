@@ -3,7 +3,32 @@ title: Introduction
 sidebar_position: 1
 ---
 
+import { Steps } from 'antd';
+
 # Workshop
+
+<Steps
+items={[
+{
+title: 'Introduction',
+description: 'This page',
+},
+{
+title: 'Setting up',
+description: 'Supporting services',
+},
+{
+title: 'Smart contract',
+description: 'Creation and deployment',
+},
+{
+title: 'Frontend',
+description: 'User interface',
+},
+]}
+/>
+
+<br />
 
 In this workshop, we will create an example application implementing the concept of a simple `Proof of Attendance Protocol (POAP)`.
 
