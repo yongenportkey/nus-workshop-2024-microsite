@@ -42,12 +42,6 @@ HelloWorldContractState3: Contract Method: Counter++
 
 </center>
 
----
-
-<center>
-![what is state](/img/what-is-state-2.png)
-</center>
-
 As shown in the above figure, we have a HelloWorld Contract that has a State called Counter. The logic for modifying the Counter state is defined in the Contract Method, and as the transaction calling this method is executed, the Counter's state also changes as the block height grows.
 
 Once the implementation of Contract Method is updated (this can happen on aelf through an UpdateSmartContract transaction), the logic for modifying the Counter state changes when the method is called again through a transaction.
