@@ -1,8 +1,8 @@
 ---
-sidebar_position: 1
+sidebar_position: 3
 ---
 
-# Setting up
+# Create Token
 
 Before we start, we need to set up the following:
 
