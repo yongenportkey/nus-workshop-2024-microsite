@@ -41,6 +41,7 @@ sequenceDiagram
     POAP Contract->>MultiTtoken Contract: Create NFT Collection
     MultiTtoken Contract->>POAP Contract: Success
     POAP Contract->>DApp: Success
+    DApp->>Event Organizer: Success
 ```
 
 
