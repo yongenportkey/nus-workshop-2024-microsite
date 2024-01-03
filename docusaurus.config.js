@@ -5,6 +5,7 @@
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
 import { themes as prismThemes } from "prism-react-renderer";
+const simplePlantUML = require("@akebifiky/remark-simple-plantuml");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -46,6 +47,7 @@ const config = {
           editUrl:
             "https://github.com/yongenportkey/nus-workshop-2024-microsite/tree/main/",
           routeBasePath: "/", // Serve the docs at the site's root
+          remarkPlugins: [simplePlantUML],
         },
         theme: {
           customCss: "./src/css/custom.css",
