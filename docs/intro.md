@@ -3,42 +3,26 @@ title: Introduction
 sidebar_position: 1
 ---
 
-import { Steps } from 'antd';
+# Welcome to aelf NUS Workshop 2024
 
-# Workshop
+## Topics Covered
 
-<Steps
-items={[
-{
-title: 'Introduction',
-description: 'This page',
-},
-{
-title: 'Setting up',
-description: 'Supporting services',
-},
-{
-title: 'Smart contract',
-description: 'Creation and deployment',
-},
-{
-title: 'Frontend',
-description: 'User interface',
-},
-]}
-/>
+ 1. How to issue tokens (FT and NFT) on aelf
 
-<br />
+ 2. How to develop smart contracts on aelf
 
-In this workshop, we will create an example application implementing the concept of a simple `Proof of Attendance Protocol (POAP)`.
+ 3. How to develop dApp on aelf
 
-## 1. Introduction
+
+## Mode of Workshop
+We will be covering the topics by developing a simple `POAP (or Proof of Attendance Protocol)` application on top of aelf.
+
+
+### 1. What is a POAP?
 
 POAP stands for "Proof of Attendance Protocol", and it refers to a type of non-fungible token (NFT) that is typically used to represent proof of attendance at a specific event. The concept behind POAP is to provide a unique and verifiable token to individuals who have participated in a particular gathering, conference, meetup, or any other event.
 
-## 2. Concept
-
-Here's how POAP generally works:
+### 2. How POAP works?
 
 - Event Organizers: The organizers of an event decide to implement POAP as a way to provide digital certificates of attendance.
 - Smart Contracts: A smart contract is deployed on a blockchain (such as Ethereum or aelf) to handle the issuance of POAP tokens. This smart contract contains the logic for minting tokens and associating them with specific event attendees.
@@ -49,14 +33,31 @@ Here's how POAP generally works:
 
 POAP tokens have gained popularity as a creative and engaging way to reward event participants, build a sense of community, and leverage blockchain technology for proof and verification purposes. They also serve as collectibles, with some individuals actively seeking out and collecting POAP tokens from various events they attend.
 
-## 3. Sequence diagram
+### 3. Create an event
+```mermaid
+sequenceDiagram
+    Event Organizer->>DApp: Login with Portkey
+    DApp->>POAP Contract: Create Event
+    POAP Contract->>MultiTtoken Contract: Create NFT Collection
+    MultiTtoken Contract->>POAP Contract: Success
+    POAP Contract->>DApp: Success
+```
+
+
+:::info
+
+MultiToken is singleton system smart contract on aelf used to host all tokens (FT and NFT). You don't need to deploy your own smart contract to issue your own tokens.
+
+:::
+
+### 4. Sequence diagram
 
 ```mermaid
 sequenceDiagram
     Attendee->>DApp: Login with Portkey
-    DApp->>poap contract: Register attendance
-    poap contract->>multitoken contract: Mint NFT
-    multitoken contract->>poap contract: Success
-    poap contract->>DApp: Success
+    DApp->>POAP Contract: Register attendance
+    POAP Contract->>MultiToken Contract: Mint NFT
+    MultiToken Contract->>POAP Contract: Success
+    POAP Contract->>DApp: Success
     DApp->>Attendee: Display NFT
 ```
