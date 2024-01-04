@@ -12,3 +12,5 @@ https://t.me/aelfdeveloper
 You can also check out link tree.
 
 https://linktr.ee/aelf.io
+
+<img src="/img/link-tree.jpeg" alt="telegram" width="200"/>
