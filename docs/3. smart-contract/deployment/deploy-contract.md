@@ -107,8 +107,8 @@ message CollectionInfo {
 Then build under src folder again.
 
 :::warning
-Please note that the DLL contract files with identical code cannot be deployed repeatedly.
-If you intend to deploy contract code with the same logic, make a slight modification in the code. For instance, add a line like `var name = "xxx"`.
+Please note that the DLL contract files with identical code cannot be deployed repeatedly. Because on AElf, when a contract is deployed, AElf checks the contract code to ensure that two identical contracts are not deployed on AElf.
+Therefore, if you intend to deploy contract code with the same logic, make a slight modification in the code. For instance, add a line like `var name = "xxx"`.
 :::
 
 ```bash copy
@@ -120,7 +120,7 @@ dotnet build
 
 If you haven't don't have test tokens on your account, you may go to https://testnet-faucet.aelf.io/ to get some free test tokens.
 
-Here is how to tranfer test tokens to side chain:
+Here is how to transfer test tokens to side chain:
 ![](/img/extension_sidechain.gif)
 
 3. Submit a proposal
