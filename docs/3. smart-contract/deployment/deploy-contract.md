@@ -10,6 +10,7 @@ Deployment procedure:
 1. Implement acs12.proto
 
 We need create a new file called `acs12.proto` under `src/Protobuf/reference` folder, this is a standard aelf package for showing users gas fee. `Acs12.proto` is necessary for deployment on AElf test net.
+We can also download `acs12.proto` from [here](https://github.com/AElfProject/AElf/blob/dev/protobuf/acs12.proto).
 
 ```protobuf copy
 /**
