@@ -50,6 +50,11 @@ message UserContractMethodFee {
 }
 ```
 
+AElf acs12 protocol introduces `UserContractMethodFees` and `UserContractMethodFee` 
+messages. These enable the structured management of fees associated with user contracts, offering flexibility to define 
+token symbols and basic fee amounts for each method. This protocol provides a configurable solution for handling gas fees 
+within the AElf blockchain ecosystem.
+
 Then we can add implementation to `poap_contract.proto`
 
 ```protobuf copy
