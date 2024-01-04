@@ -7,6 +7,8 @@ Please join our developer channel and let us know if you need any help.
 
 https://t.me/aelfdeveloper
 
-You can check out link tree.
+<img src="/img/aelf-developer-qr.jpeg" alt="telegram" width="200"/>
+
+You can also check out link tree.
 
 https://linktr.ee/aelf.io
