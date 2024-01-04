@@ -1,4 +1,4 @@
 ---
-title: Additional materials
+title: More resources
 sidebar_position: 6
 ---
