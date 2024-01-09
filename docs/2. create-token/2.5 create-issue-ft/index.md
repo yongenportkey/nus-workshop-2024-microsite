@@ -10,9 +10,13 @@ After obtaining the seed, click the `Create Token` button to create a token.
 
 And fill in the form to create a token.
 
-![create ft](/img/forest-create-ft-form.png)
+![create ft_form](/img/forest-create-ft-form.png)
 
-After filling out the form, click the `Create` button, and then the token will be created and issued.
+After filling out the form, click the `Create` button, and then the token will be created.
+
+![issue ft](/img/forest-issue-ft.png)
+
+Finally, click `Issue` button to issue token.
 
 Follow the onscreen instructions.
 

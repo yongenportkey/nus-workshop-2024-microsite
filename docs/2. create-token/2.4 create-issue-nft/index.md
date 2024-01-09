@@ -10,7 +10,7 @@ After creating NFT collection, click `Add item`.
 
 And fill in the form to create NFT item.
 
-![create nft](/img/forest-create-nft-form.png)
+![create nft_form](/img/forest-create-nft-form.png)
 
 After filling out the form, click the `Create` button, and then the NFT will be created and issued.
 
