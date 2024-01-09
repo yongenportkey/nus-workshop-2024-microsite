@@ -2,7 +2,7 @@
 sidebar_position: 6
 ---
 
-# Create and Issue Token on Forest
+# Create and issue Token on Forest
 
 After obtaining the seed, click the `Create Token` button to create a token.
 

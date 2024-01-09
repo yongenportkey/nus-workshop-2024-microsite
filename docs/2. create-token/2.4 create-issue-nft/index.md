@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-# Create and Issue NFT on Forest
+# Create and issue NFT on Forest
 
 After creating NFT collection, click `Add item`.
 
